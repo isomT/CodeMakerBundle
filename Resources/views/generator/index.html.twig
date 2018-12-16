@@ -1,0 +1,68 @@
+{% extends baseLayoutCodeGenerator %}
+
+{% block body %}
+    {# HEADER #}
+    <div id="page_heading" data-uk-sticky="{ top: 48, media: 960 }" class="user_heading md-card"
+         style="margin-bottom: 5px;">
+        <span class="uk-text-upper uk-text-small"><a href="#">Home /</a></span>
+        <h1>Stratégies de codage </h1>
+    </div>
+    {# END HEADER #}
+
+    {# Corp de la page #}
+    <div id="page_content_inner">
+        <div class="md-card">
+            <div class="md-card-content">
+                <table id="dt_default" class="uk-table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Pattern</th>
+                        <th>Dernier code utilisé</th>
+                        <th class="uk-text-center">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for generator in generators %}
+                        <tr>
+                            <td>{{ generator.displayName }}</td>
+                            <td>{{ generator.simplePattern }}</td>
+                            <td>{{ generator.lastCode }}</td>
+                            <td class="uk-text-center">
+                                {#<a href="#"#}
+                                {#onclick="UIkit.modal.confirm('Êtes-vous sûr de vouloir supprimer définitivement cette pièce ?',#}
+                                {#function(){ deleteEntity('{{ generator.id }}', 'id', 'generator', '{{ path('generator_index') }}') });">#}
+                                {#<i class="md-icon material-icons uk-text-danger">delete</i>#}
+                                {#</a>#}
+                                <a href="{{ path('generator_delete', {'id': generator.id}) }}">
+                                    <i class="md-icon material-icons uk-text-danger">delete</i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="md-fab-wrapper">
+        <a class="md-fab md-fab-accent" href="{{ path('generator_new') }}"
+           data-uk-tooltip="{cls:'uk-tooltip-small',pos:'left'}" title="Nouvelle stratégie de codage"
+           id="recordAdd">
+            <i class="material-icons">&#xE145;</i>
+        </a>
+    </div>
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    {#{{ include('@Sav/deleteBlock.twig') }}#}
+    <!-- datatables -->
+    <script src="{{ asset('altair/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <!-- datatables custom integration -->
+    <script src="{{ asset('altair/assets/js/custom/datatables/datatables.uikit.min.js') }}"></script>
+    <!--  datatables functions -->
+    <script src="{{ asset('altair/assets/js/pages/plugins_datatables.min.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,15 @@
+services:
+#    id.maker.example:
+#        class: SBC\CodeMakerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    code.maker.subscriber:
+        class: SBC\CodeMakerBundle\EventListener\CodeMakerSubscriber
+        arguments: ["@isom.code.maker"]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    isom.code.maker:
+        class: SBC\CodeMakerBundle\service\CodeMakerService
+        arguments: ["@service_container"]
+#        arguments: ["@doctrine.orm.entity_manager"]

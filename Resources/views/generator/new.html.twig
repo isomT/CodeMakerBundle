@@ -1,0 +1,16 @@
+{% extends baseLayoutCodeGenerator %}
+
+
+{% block body %}
+    {% if cm_form_template == "native" %}
+        {{ include('@CodeMaker/generator/form_native_js.html.twig') }}
+    {% elseif cm_form_template == "material" %}
+        {{ include('@CodeMaker/generator/form_material.html.twig') }}
+    {% endif %}
+
+{% endblock %}
+
+{% block script %}
+    {{ include('@CodeMaker/generator/script.twig') }}
+{% endblock %}
+

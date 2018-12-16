@@ -1,0 +1,103 @@
+<style>
+    .margin{
+        margin: 10px;
+    }
+</style>
+
+<hr>
+{{ form_start(form) }}
+<table border="1" class="margin">
+    <tr>
+        <td width="500px">
+            <h5>Code generator</h5>
+            {{ form_label(form.displayName) }}
+            {{ form_widget(form.displayName, {'attr': {'style': 'width:90%'}} ) }}
+            <br>
+            {{ form_label(form.simplePattern) }}
+            {{ form_widget(form.simplePattern, {'attr': {'style': 'width:90%'}} ) }}
+            <br>
+            <label>Simulation of the before last code</label>
+            {{ form_widget(form.lastCode, {'attr': {'style': 'width:90%'}} ) }}
+            <br>
+            {{ form_label(form.respectPattern) }}
+            {{ form_widget(form.respectPattern) }}
+        </td>
+        <td>
+            <h5>Pattern creator </h5>
+            <table width="100%" style="text-align: center">
+                <tr>
+                    <td>
+                        <label for="prefix">Static prefix</label>
+                        <input type="text" id="prefix">
+                        <button id="btnPrefix" type="button">+</button>
+                    </td>
+                    <td>
+                        <label for="c_option">Alphanumeric characters</label>
+                        <input type="text" id="c_option">
+                        <button id="btnOption" type="button">+</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><button id="btnYear" type="button">Year counter (__YY__)</button></td>
+                    <td><button id="btnMonth" type="button">Month counter(__MM__)</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <table width="100%" frame="box" cellspacing="0" cellpadding="5" style="margin-top: 10px;">
+                            <tr>
+                                <td width="20%">
+                                    <label for="incr_length">Length</label>
+                                    <select id="incr_length" style='width:100%'>
+                                        <option value="">  </option>
+                                        <option value="3"> 3</option>
+                                        <option value="4"> 4</option>
+                                        <option value="5"> 5</option>
+                                        <option value="6"> 6</option>
+                                        <option value="7"> 7</option>
+                                        <option value="8"> 8</option>
+                                        <option value="9"> 9</option>
+                                        <option value="10"> 10</option>
+                                    </select>
+                                </td>
+                                <td width="20%">
+                                    <label for="incr_dep">Starting</label>
+                                    <input type="text" pattern="-?[0-9]*([0-9]+)?" id="incr_dep" style='width:100%' >
+                                </td>
+                                    <td width="40%">
+                                    <div>Reset the counter each</div>
+
+                                    <label for="r_option1">
+                                        <input type="radio" id="r_option1" value="f" name="resetCycle" checked>
+                                        <label >Free</label>
+                                    </label>
+
+                                    <label for="r_option2">
+                                        <input type="radio" id="r_option2" value="m" name="resetCycle">
+                                        <label >Month</label>
+                                    </label>
+
+                                    <label for="r_option3">
+                                        <input type="radio" id="r_option3" value="y" name="resetCycle">
+                                        <label >Year</label>
+                                    </label>
+                                </td>
+                                <td width="20%" align="center">
+                                    <button id="btnCounter" type="button">Add this increment counter</button>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<button type="submit" class="margin"> Valider </button>
+{{ form_end(form) }}
+
+

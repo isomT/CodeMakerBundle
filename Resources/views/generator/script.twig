@@ -1,0 +1,105 @@
+<script>
+
+    $(function () {
+        __simplePatternInput = $('#generator_simplePattern');
+        __lastCodeInput = $('#generator_lastCode');
+        __btnPrefix = $('#btnPrefix');
+        __btnOption = $('#btnOption');
+        __btnYear = $('#btnYear');
+        __btnMonth = $('#btnMonth');
+        __btnCounter = $('#btnCounter');
+        __btnInit = $('#btnInit');
+
+
+        __btnInit.click(function () {
+            __btn = $('button');
+            $('input > text').val('');
+            __btn.removeClass('disabled');
+        });
+
+        __btnPrefix.click(function () {
+            __inputPrefix = $('#prefix');
+            if (__inputPrefix.val() === '') {
+                alert('The prefix field is empty !')
+            } else {
+                __simplePatternInput.val(__simplePatternInput.val() + "(" + __inputPrefix.val().toUpperCase() + ")");
+                __lastCodeInput.val(__lastCodeInput.val() + __inputPrefix.val().toUpperCase());
+            }
+            __inputPrefix.val('');
+        });
+
+        __btnOption.click(function () {
+            __inputOption = $('#option');
+            if (__inputOption.val() === '') {
+                alert('Le champ Caractères en option est vide !')
+            } else {
+                __simplePatternInput.val(__simplePatternInput.val() + "(___" + __inputOption.val().toUpperCase() + "___)");
+                __lastCodeInput.val(__lastCodeInput.val() + __inputOption.val().substring(1).toUpperCase());
+            }
+            __inputOption.val('');
+        });
+
+        __btnYear.click(function () {
+            __btnYear.attr("disabled", "disabled");
+            __simplePatternInput.val(__simplePatternInput.val() + "(__yy__)");
+            __lastCodeInput.val(__lastCodeInput.val() + new Date().getFullYear().toString().substr(-2));
+
+        });
+        __btnMonth.click(function () {
+            __btnMonth.attr("disabled", "disabled");
+            __simplePatternInput.val(__simplePatternInput.val() + "(__mm__)");
+            __lastCodeInput.val(__lastCodeInput.val() + ("0" + (new Date().getMonth() + 1)).slice(-2));
+
+        });
+
+        __btnCounter.click(function () {
+            __incrLengthInput = $('#incr_length');
+            __incrDepInput = $('#incr_dep');
+            __resetCycleRadio = $("input[name='resetCycle']:checked").val();
+            __incrDepValue = 0;
+
+            if (__incrLengthInput.val() === '') {
+                alert('Please complete the empty filds !')
+            } else {
+                if(__incrDepInput.val() !== ""){
+                    if (! Number.isInteger(parseInt(__incrDepInput.val()))) {
+                        alert('The value must be integer');
+                        __incrLengthInput.val('');
+                        __incrDepInput.val('');
+                        return Error();
+                    } else {
+                        __incrDepValue = __incrDepInput.val();
+                    }
+                }
+
+                __i__ = "";
+                for (i = 0; i < __incrLengthInput.val(); i++) {
+                    __i__ = __i__ + "i";
+                }
+                __simplePatternInput.val(__simplePatternInput.val() + "(__" + __i__ +__resetCycleRadio+ "__)".toLowerCase());
+                __lastCodeInput.val(__lastCodeInput.val() + FormatInteger(__incrDepValue, __incrLengthInput.val()));
+            }
+            __incrLengthInput.val('');
+            __incrDepInput.val('');
+
+            var radios = document.getElementsByName('resetCycle');
+            for (var i = 1, length = radios.length; i < length; i++)
+            {
+                if (radios[i].checked && radios[i].id !== 'r_option1')
+                {
+                    // do whatever you want with the checked radio
+                    //alert(radios[i].value);
+                    radios[i].checked = false;
+                    // only one radio can be logically checked, don't check the rest
+                    break;
+                }
+            }
+            radios[0].checked = true;
+        });
+
+        function FormatInteger(num, length) {
+            return (num / Math.pow(10, length)).toFixed(length).substr(2);
+        }
+    });
+
+</script>

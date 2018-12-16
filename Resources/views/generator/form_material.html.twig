@@ -1,0 +1,144 @@
+<style>
+    .is-invalid{
+        !important;
+    }
+</style>
+{{ form_start(form) }}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--5-col">
+
+        <div class="mdl-grid">
+
+            <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                {{ form_widget(form.displayName, {'attr': {'class': 'mdl-textfield__input'}} ) }}
+                <label class="mdl-textfield__label">Choisisez une entité</label>
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                {{ form_widget(form.simplePattern, {'attr': {'class': 'mdl-textfield__input'}} ) }}
+                <label class="mdl-textfield__label">Pattern</label>
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                {{ form_widget(form.lastCode, {'attr': {'class': 'mdl-textfield__input'}} ) }}
+                <label class="mdl-textfield__label">Simulation de code</label>
+            </div>
+
+            {#<div class="mdl-cell mdl-cell--12-col">#}
+                {#{{ form_widget(form.respectPattern, {'attr': {'class': 'mdl-checkbox__input'}} ) }}#}
+                {#<label class="mdl-checkbox mdl-js-checkbox">Respecter le patterne</label>#}
+            {#</div>#}
+
+            <label class = "mdl-checkbox mdl-js-checkbox">
+                {#<input type = "checkbox" id = "checkbox1" class = "mdl-checkbox__input" checked>#}
+                {{ form_widget(form.respectPattern, {'attr': {'class': 'mdl-checkbox__input'}} ) }}
+                <span class = "mdl-checkbox__label">Respecter le patterne</span>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="mdl-cell mdl-cell--7-col">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="prefix">
+                            <label class="mdl-textfield__label" for="prefix">Préfix</label>
+                        </div>
+                        <button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="btnPrefix">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="c_option">
+                            <label class="mdl-textfield__label" for="c_option">Caractères en option</label>
+                        </div>
+                        <button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="btnOptions">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-grid">
+                    <button type="button" class="mdl-cell mdl-cell--6-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="btnYear">
+                        Compteur Année (__yy__)
+                    </button>
+                    <button type="button" class="mdl-cell mdl-cell--6-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="btnMonth">
+                        Compteur Mois (__mm__)
+                    </button>
+                </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col">
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <select class="mdl-textfield__input" id="incr_length">
+                                <option value=""></option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                                <option value="10"> 10</option>
+                            </select>
+                            <label class="mdl-textfield__label" for="incr_length">Lengeur</label>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*([0-9]+)?" id="incr_dep">
+                            <label class="mdl-textfield__label" for="incr_begin">Départ</label>
+                            <span class="mdl-textfield__error">Départ is not a integer!</span>
+                        </div>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <div>Remise le compteur à zéro chaque</div>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="r_option1">
+                            <input type="radio" id="r_option1" name="resetCycle" value="f"
+                                   class="mdl-radio__button" checked>
+                            <span class="mdl-radio__label">Libre</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="r_option2">
+                            <input type="radio" id="r_option2" name="resetCycle" value="m"
+                                   class="mdl-radio__button" >
+                            <span class="mdl-radio__label">Mois</span>
+                        </label>
+
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="r_option3">
+                            <input type="radio" id="r_option3" name="resetCycle" value="y"
+                                   class="mdl-radio__button">
+                            <span class="mdl-radio__label">Année</span>
+                        </label>
+                    </div>
+
+                    <button type="button" class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="btnCounter">
+                        Compteur d'incrementation
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{{ form_end(form) }}
+<script>
+    $(function () {
+       $(".is-invalid").removeClass('is-invalid');
+    });
+</script>
