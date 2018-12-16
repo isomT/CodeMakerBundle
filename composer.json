@@ -1,0 +1,34 @@
+{
+    "name" : "isom/code-maker",
+    "description" : "CodeMakerBundle is a very simple and powerful coding system that will allow you to implement a completely custom coding strategy for your entities.",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Ismail Omar",
+        "email" : "omar.ismail@sbc.tn"
+    }],
+    "keywords" : [
+        "code maker",
+        "coding system",
+        "dynamic coding system",
+        "id manager",
+        "strategy generator",
+        "sequence generator"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php": ">=5.5.9",
+        "symfony/framework-bundle": "^2.8 || ^3.4.12",
+        "doctrine/doctrine-bundle": "*",
+        "doctrine/orm": "^2.5",
+        "twig/twig": "^1.0||^2.0"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "SBC\\CodeMakerBundle" : ""
+        }
+    },
+    "target-dir" : "SBC/CodeMakerBundle",
+    "minimum-stability": "dev"
+}
