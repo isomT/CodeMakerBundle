@@ -1,0 +1,185 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+<!-- uikit -->
+<link rel="stylesheet" href="{{ asset('bundles/codemaker/uikit.almost-flat.min.css') }}" media="all">
+
+<!-- flag icons -->
+<link rel="stylesheet" href="{{ asset('bundles/codemaker/flags.min.css') }}" media="all">
+
+<!-- altair admin Main-->
+<link rel="stylesheet" href="{{ asset('bundles/codemaker/main.min.css') }}" media="all">
+
+<!-- themes -->
+<link rel="stylesheet" href="{{ asset('bundles/codemaker/themes_combined.min.css') }}" media="all">
+
+<div id="page_content_inner">
+    {# Corp de la page #}
+    <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
+        <div class="uk-width-large-5-10">
+            <div class="md-card">
+                <div class="md-card-content ">
+
+                    <div class="uk-form-row">
+                        <div class="uk-input-group">
+                            <span class="uk-input-group-addon"> <i class="material-icons">label</i> </span>
+                            <label>Choisisez une entité</label>
+                            {{ form_widget(form.displayName) }}
+                        </div>
+                    </div>
+
+                    <div class="uk-form-row">
+                        <div class="uk-input-group">
+                            <span class="uk-input-group-addon"> <i class="material-icons">label</i> </span>
+                            <label>Pattern</label>
+                            {{ form_widget(form.simplePattern) }}
+                            <span class="uk-input-group-addon"><a id="btnInit" class="md-btn md-btn-gplus md-btn-icon" href="#"><i class="uk-icon-refresh no_margin"></i></a></span>
+                        </div>
+                    </div>
+
+                    <div class="uk-form-row">
+                        <div class="uk-input-group">
+                            <span class="uk-input-group-addon"> <i class="material-icons">label</i> </span>
+                            <label>Simulation de code</label>
+                            {{ form_widget(form.lastCode) }}
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <div class="uk-input-group">
+                            <span class="uk-input-group-addon"> <i class="material-icons">label</i> </span>
+                            {{ form_widget(form.respectPattern) }}
+                            <label for="switch_demo_large" class="inline-label">Respecter le patterne</label>
+                            <span class="uk-form-help-block">Chaque fois qu'on saisit un nouveau code on doit respecter le pattern</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-width-large-5-10">
+            <div class="md-card">
+                <div class="md-card-toolbar">
+                    <h3 class="md-card-toolbar-heading-text">
+                        Créateur du pattern
+                    </h3>
+                </div>
+                <div class="md-card-content large-padding">
+
+                    <div class="uk-grid uk-grid-small" data-uk-grid-margin>
+                        <div class="uk-width-large-1-2">
+                            <div class="uk-input-group">
+                                <label for="prefix">Prefix</label>
+                                <input id="prefix" type="text" class="md-input label-fixed">
+                                <span class="uk-input-group-addon"><a id="btnPrefix" class="md-btn md-btn-primary md-btn-block md-btn-wave-light" href="#"><i class="uk-icon-plus-circle no_margin"></i></a></span>
+                            </div>
+                        </div>
+                        <div class="uk-width-large-1-2">
+                            <div class="uk-input-group">
+                                <label for="option">Caractères en option</label>
+                                <input id="option" type="text" class="md-input label-fixed">
+                                <span class="uk-input-group-addon"><a id="btnOption" class="md-btn md-btn-primary md-btn-block md-btn-wave-light" href="#"><i class="uk-icon-plus-circle no_margin"></i></a></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="uk-grid-divider">
+                    <div class="uk-grid uk-grid-small" data-uk-grid-margin>
+                        <div class="uk-width-large-1-2">
+                            <button id="btnYear" type="button" class="md-btn md-btn-primary md-btn-block md-btn-wave-light">Compteur Année (__YY__)</button>
+                        </div>
+                        <div class="uk-width-large-1-2">
+                            <button id="btnMonth" type="button" class="md-btn md-btn-primary md-btn-block md-btn-wave-light">Compteur Mois (__MM__)</button>
+                        </div>
+                    </div>
+                    <hr class="uk-grid-divider">
+
+                    <div class="uk-grid uk-grid-small" data-uk-grid-margin>
+                        <div class="uk-width-large-1-1">
+
+                            <div class="uk-grid uk-grid-large" data-uk-grid-margin>
+                                <div class="uk-width-large-1-4">
+                                    <div class="uk-form-row uk-margin-bottom">
+                                        <label for="incr_length">Lengeur</label>
+                                        <select id="incr_length" class="md-input label-fixed">
+                                            <option value="">  </option>
+                                            <option value="3"> 3</option>
+                                            <option value="4"> 4</option>
+                                            <option value="5"> 5</option>
+                                            <option value="6"> 6</option>
+                                            <option value="7"> 7</option>
+                                            <option value="8"> 8</option>
+                                            <option value="9"> 9</option>
+                                            <option value="10"> 10</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-width-medium-1-4">
+                                    <label for="incr_dep">Départ</label>
+                                    <input id="incr_dep" type="number" class="md-input label-fixed">
+                                </div>
+                                <div class="uk-width-medium-2-4">
+                                    <span class="icheck-inline">
+                                        <input type="radio" id="radio1" checked data-md-icheck />
+                                        <label for="radio1" class="inline-label">Libre</label>
+                                    </span>
+                                    <span class="icheck-inline">
+                                        <input type="radio" id="radio2" data-md-icheck />
+                                        <label for="radio2" class="inline-label">Mois</label>
+                                    </span>
+                                    <span class="icheck-inline">
+                                        <input type="radio" id="radio3" data-md-icheck />
+                                        <label for="radio3" class="inline-label">Année</label>
+                                    </span>
+                                    <span class="uk-form-help-block">Incrémentation par</span>
+                                </div>
+                            </div>
+                            <button id="btnCounter" type="button" class="md-btn md-btn-primary md-btn-block md-btn-wave-light">Compteur d'incrementation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="md-fab-wrapper">
+    <button type="submit" class="md-fab md-fab-small md-fab-accent" id="recordAdd">
+        <i class="material-icons md-color-white">&#xE161;</i>
+    </button>
+</div>
+
+<!-- common functions -->
+<script src=" {{ asset('bundles/codemaker/altair_admin_common.js') }}"></script>
+
+<!-- uikit functions -->
+<script src="{{ asset('bundles/codemaker/uikit_custom.js') }}"></script>
+
+<!-- altair common functions/helpers -->
+<script src="{{ asset('bundles/codemaker/altair_admin_common.js') }}"></script>
+
+<script>
+    <!-- google web fonts -->
+    WebFontConfig = {
+        google: {
+            families: [
+                'Source+Code+Pro:400,700:latin',
+                'Roboto:400,300,500,700,400italic:latin'
+            ]
+        }
+    };
+    (function () {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script>
+
+
+

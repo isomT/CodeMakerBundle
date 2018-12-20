@@ -21,32 +21,28 @@ class GeneratorType extends AbstractType
                 'placeholder' => '',
                 'choices' => $entities_name,
                 'required' => true,
-//                'attr' => array(
-//                    'class' => 'md-input label-fixed'
-//                )
             ))
             ->add('simplePattern', TextType::class, array(
                 'required' => true,
-//                'attr' => array(
-//                    'class' => 'md-input label-fixed',
-//                    'style' => 'text-transform: initial'
-//                )
+                'attr' => array(
+                    'class' => 'md-input label-fixed',
+                    'style' => 'text-transform: initial'
+                )
             ))
             ->add('lastCode', TextType::class, array(
                 'required' => true,
-//                'attr' => array(
-//                    'class' => 'md-input label-fixed',
-//                    //'style' => 'text-transform: inherit'
-//                )
+                'attr' => array(
+                    'class' => 'md-input label-fixed',
+                    'style' => 'text-transform: inherit'
+                )
             ))
             ->add('respectPattern', CheckboxType::class, array(
                 'required' => false,
-//                'attr' => array(
-//                    'data-name' => 'FODEC_ROW',
-//                    'checked' => '',
-//                    'data-switchery' =>'',
-//                    'data-switchery-size' => 'large'
-//                )
+                'attr' => array(
+                    'checked' => '',
+                    'data-switchery' =>'',
+                    'data-switchery-size' => 'large'
+                )
             ));
     }
 

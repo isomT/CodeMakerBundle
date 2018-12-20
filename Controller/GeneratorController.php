@@ -17,7 +17,7 @@ class GeneratorController extends Controller
 {
 
     /**
-     * @Route("/", name="generator_index")
+     * @Route("/list", name="generator_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -27,6 +27,8 @@ class GeneratorController extends Controller
 
         return $this->render('@CodeMaker/generator/index.html.twig', array(
             'generators' => $generators,
+            'cm_form_template' => $this->getParameter('cm_form_template'),
+            'cm_base_layout' => $this->getParameter('cm_base_layout')
         ));
     }
 
@@ -43,14 +45,6 @@ class GeneratorController extends Controller
 
         foreach ($entities_with_maker as $item){
             $annotation = $item['makerAnnotation'];
-
-//            $displayName = $annotation->displayName;
-//            $this->get('isom.code.maker')->check_annotation_conflict($displayName);
-//            $find = $this->get('isom.code.maker')->get_generator($annotation);
-//            if($find === null){
-//                $availableList[$displayName] = $displayName;
-//            }
-
             if($annotation->discriminatorColumn === null){
                 $displayName = $annotation->displayName;
                 $this->get('isom.code.maker')->check_annotation_conflict($displayName);
@@ -86,7 +80,8 @@ class GeneratorController extends Controller
         return $this->render('@CodeMaker/generator/new.html.twig', array(
             'generator' => $generator,
             'form' => $form->createView(),
-            'cm_form_template' => $this->getParameter('cm_form_template')
+            'cm_form_template' => $this->getParameter('cm_form_template'),
+            'cm_base_layout' => $this->getParameter('cm_base_layout')
         ));
     }
 

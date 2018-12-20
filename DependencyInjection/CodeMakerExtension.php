@@ -32,6 +32,7 @@ class CodeMakerExtension extends Extension
          *  $container->setParameter( 'sbc_respect_pattern', $config[ 'respect_pattern' ] );
          */
         $container->setParameter( 'cm_form_template', $config[ 'cm_form_template' ] );
+        $container->setParameter( 'cm_base_layout', $config[ 'cm_base_layout' ] );
 
         /**
          * SECOND APPROACH: Separated config block, injecting the config into a service

@@ -1,65 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    {% block head %}
-
-    {% endblock %}
-</head>
-
-
 <body>
-    <div class="mdl-layout mdl-js-layout">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout-icon"></div>
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout__title">Material Design Lite</span>
-                <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="#">Hello</a>
-                    <a class="mdl-navigation__link" href="#">World.</a>
-                    <a class="mdl-navigation__link" href="#">How</a>
-                    <a class="mdl-navigation__link" href="#">Are</a>
-                    <a class="mdl-navigation__link" href="#">You?</a>
-                </nav>
-            </div>
+        <header style="background-color: #8cacbb; text-align: center">
+            Your Header
         </header>
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout__title">Material Design Lite</span>
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="#">Hello</a>
-                <a class="mdl-navigation__link" href="#">World.</a>
-                <a class="mdl-navigation__link" href="#">How</a>
-                <a class="mdl-navigation__link" href="#">Are</a>
-                <a class="mdl-navigation__link" href="#">You?</a>
-            </nav>
-        </div>
 
-        <main class="mdl-layout__content">
-            {% block body %}
+        {% block body %}
                 <div>Content</div>
-            {% endblock %}
-        </main>
+        {% endblock %}
 
-        <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">Title</div>
-                <ul class="mdl-mini-footer__link-list">
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Privacy & Terms</a></li>
-                </ul>
-            </div>
+        <footer style="background-color: #8cacbb; text-align: center">
+            Your Footer
         </footer>
-    </div>
+
 </body>
-
-
     {% block script %}
-        <script>
-        </script>
     {% endblock %}
 </html>

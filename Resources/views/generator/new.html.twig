@@ -1,11 +1,12 @@
-{% extends baseLayoutCodeGenerator %}
-
+{% extends cm_base_layout %}
 
 {% block body %}
     {% if cm_form_template == "native" %}
         {{ include('@CodeMaker/generator/form_native_js.html.twig') }}
     {% elseif cm_form_template == "material" %}
         {{ include('@CodeMaker/generator/form_material.html.twig') }}
+    {% elseif cm_form_template == "altair" %}
+        {{ include('@CodeMaker/generator/form_altair.html.twig') }}
     {% endif %}
 
 {% endblock %}

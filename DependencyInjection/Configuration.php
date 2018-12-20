@@ -27,6 +27,8 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('auto_update_id')->defaultValue(true)->end()
                 ->booleanNode('respect_pattern')->defaultValue(true)->end()
                 ->scalarNode('cm_form_template')->defaultValue("native")->end()
+                ->scalarNode('cm_base_layout')->defaultValue("@bundleName/base.html.twig")->end()
+
             ->end()
         ;
         return $treeBuilder;
