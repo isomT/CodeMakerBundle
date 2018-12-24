@@ -20,7 +20,7 @@ While developing management applications, we often face a lot of difficulties wh
 	code_maker:
 	    auto_update_id: true
 	    respect_pattern: true
-	    cm_form_template: 'native' #by default native
+	    cm_form_template: 'native' #by default native|material|altair
 	    cm_base_layout: '@your-base-layout.html.twig'
 	```
 5. Run `php bin/console doctrine:schema:update --force`
